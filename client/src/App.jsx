@@ -19,7 +19,6 @@ function App() {
       })
   });
 
-
   const { data: fenData, isLoading: fenLoading, refetch: fenRefetch } = useQuery('movesFen', () =>
     axios.get('/moves/fen')
       .then((res) => {
@@ -32,6 +31,7 @@ function App() {
         throw new Error('Error fetching data:', error);
       })
   );
+
   const { isLoading, isError } = useQuery('movesData', () =>
     axios.get('/moves')
       .then((res) => {
@@ -50,30 +50,28 @@ function App() {
   if (isError) return <p>Error fetching data</p>;
 
   const resetBoard = () => {
-const elements = document.getElementsByClassName(`reset`);
-elements[0].style.backgroundColor = 'white';
-elements[0].style.color = 'black';
-elements[0].style.border = '2px solid black';
+    const elements = document.getElementsByClassName(`reset`);
+    elements[0].style.backgroundColor = 'white';
+    elements[0].style.color = 'black';
+    elements[0].style.border = '2px solid black';
     axios.get('/moves/reset').then((res) => {
       histroyRefecht()
 
       fenRefetch()
       setMoves(res.data);
       console.log("board reset")
-elements[0].style.backgroundColor = 'black';
-elements[0].style.color = 'white';
+      elements[0].style.backgroundColor = 'black';
+      elements[0].style.color = 'white';
 
     })
   }
 
-
   const enterHandle = (index) => {
-const elements = document.getElementsByClassName(`enterButton`);
-elements[0].style.backgroundColor = 'white';
-elements[0].style.color = 'black';
+    const elements = document.getElementsByClassName(`enterButton`);
+    elements[0].style.backgroundColor = 'white';
+    elements[0].style.color = 'black';
+    elements[0].style.border = '2px solid black';
 
-	  
-elements[0].style.border = '2px solid black';
     console.log(index)
     let form_data = {
       "move": `-1`
@@ -83,21 +81,20 @@ elements[0].style.border = '2px solid black';
         histroyRefecht()
         fenRefetch()
         setMoves(res.data);
-
-elements[0].style.backgroundColor = 'black';
-elements[0].style.color = 'white';
+        elements[0].style.backgroundColor = 'black';
+        elements[0].style.color = 'white';
       })
       .catch((error) => {
         console.error('Error submitting move:', error);
       });
   };
-  const submitHandle = (index) => {
-const elements = document.getElementsByClassName(`button${index}`);
-elements[0].style.backgroundColor = 'white';
-elements[0].style.color = 'black';
 
-elements[0].style.border = '2px solid black';
-	  
+  const submitHandle = (index) => {
+    const elements = document.getElementsByClassName(`button${index}`);
+    elements[0].style.backgroundColor = 'white';
+    elements[0].style.color = 'black';
+    elements[0].style.border = '2px solid black';
+
     console.log(index)
     let form_data = {
       "move": `${(index != -1) ? moves[index] : -1}`
@@ -108,9 +105,9 @@ elements[0].style.border = '2px solid black';
         fenRefetch()
         setMoves(res.data);
 
-elements[0].style.border = '0px';
-elements[0].style.color = 'white';
-	elements[0].style.backgroundColor = '#000';
+        elements[0].style.border = '0px';
+        elements[0].style.color = 'white';
+        elements[0].style.backgroundColor = '#000';
       })
       .catch((error) => {
         console.error('Error submitting move:', error);
@@ -118,19 +115,18 @@ elements[0].style.color = 'white';
   };
 
   const undoHandle = () => {
+    const elements = document.getElementsByClassName(`undoButton`);
+    elements[0].style.backgroundColor = 'white';
+    elements[0].style.color = 'black';
+    elements[0].style.border = '2px solid black';
 
-const elements = document.getElementsByClassName(`undoButton`);
-elements[0].style.backgroundColor = 'white';
-elements[0].style.color= 'black';
-
-elements[0].style.border = '2px solid black';
     axios.get('/moves/undo')
       .then((res) => {
         histroyRefecht()
         fenRefetch()
         setMoves(res.data);
-elements[0].style.backgroundColor = 'black';
-elements[0].style.color= 'white';
+        elements[0].style.backgroundColor = 'black';
+        elements[0].style.color = 'white';
       })
       .catch((error) => {
         console.error('Error submitting move:', error);
@@ -140,9 +136,9 @@ elements[0].style.color= 'white';
   return (
     <>
       <div className='bodyMenu'>
-	  <div className='fenView'>
-        {fenData}
-	  </div>
+        <div className='fenView'>
+          {fenData}
+        </div>
         <div className='pgnView'>
           {moveHistory}
         </div>
@@ -151,13 +147,11 @@ elements[0].style.color= 'white';
           <button className="enterButton" onClick={() => enterHandle(-1)}>Enter</button>
           <button className="reset" onClick={() => resetBoard()}>reset</button>
         </div>
-
-	  <center>
-        {moves.map((move, index) => (
-          <button className={`button${index}`} key={index} onClick={() => submitHandle(index)}>{move}</button>
-        ))}
-
-	  </center>
+        <center>
+          {moves.map((move, index) => (
+            <button className={`button${index}`} key={index} onClick={() => submitHandle(index)}>{move}</button>
+          ))}
+        </center>
       </div>
     </>
   );
