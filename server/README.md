@@ -1,1 +1,0 @@
-# terminal-chess-2
