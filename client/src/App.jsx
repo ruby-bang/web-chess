@@ -94,6 +94,8 @@ elements[0].style.color = 'white';
   const submitHandle = (index) => {
 const elements = document.getElementsByClassName(`button${index}`);
 elements[0].style.backgroundColor = 'white';
+elements[0].style.color = 'black';
+
 elements[0].style.border = '2px solid black';
 	  
     console.log(index)
@@ -107,7 +109,8 @@ elements[0].style.border = '2px solid black';
         setMoves(res.data);
 
 elements[0].style.border = '0px';
-	elements[0].style.backgroundColor = '#EBEDEF';
+elements[0].style.color = 'white';
+	elements[0].style.backgroundColor = '#000';
       })
       .catch((error) => {
         console.error('Error submitting move:', error);
@@ -137,6 +140,9 @@ elements[0].style.color= 'white';
   return (
     <>
       <div className='bodyMenu'>
+	  <div className='fenView'>
+        {fenData}
+	  </div>
         <div className='pgnView'>
           {moveHistory}
         </div>
@@ -152,9 +158,6 @@ elements[0].style.color= 'white';
         ))}
 
 	  </center>
-	  <div className='fenView'>
-        {fenData}
-	  </div>
       </div>
     </>
   );

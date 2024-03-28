@@ -4,9 +4,9 @@ function GetResponse(fen) {
   return new Promise((resolve, reject) => {
     const stockfish = exec('./stockfish');
 
-    stockfish.stdin.write(`position fen ${fen}\n go depth 15\n`);
+    stockfish.stdin.write(`setoption name UCI_Elo value 3190\nposition fen ${fen}\n go depth 15\n`);
 
-    let bestMoveFound = false; // Menyimpan status apakah best move sudah ditemukan
+    let bestMoveFound = false;
 
     stockfish.stdout.on('data', (data) => {
       const output = data.toString().split('\n');
@@ -15,7 +15,7 @@ function GetResponse(fen) {
         if (line.startsWith("bestmove")) {
           const bestMove = line.split(' ')[1];
           stockfish.stdin.end();
-          bestMoveFound = true; // Set status menjadi true saat best move ditemukan
+          bestMoveFound = true; 
           resolve(bestMove);
           return;
         }
@@ -23,7 +23,7 @@ function GetResponse(fen) {
     });
 
     stockfish.on('exit', (code, signal) => {
-      if (!bestMoveFound) { // Jika best move belum ditemukan saat proses keluar
+      if (!bestMoveFound) {
         reject(new Error(`Stockfish process exited without finding best move. Exit code: ${code}, signal: ${signal}`));
       }
     });

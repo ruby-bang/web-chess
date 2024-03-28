@@ -8,62 +8,55 @@ body {
 	margin : 10px
 }
 .fenView{
-
-	position:absolute;
-bottom:10px;
-left:20px;
-right:20px;
   border-radius: 5px;
-	font-size: 10px;
-  padding: 10px;
+  border: 2px solid #000;
+font-size: 10px;
+margin-left:10px;
+margin-right:10px;
+padding: 10px;
 
   margin-top: 20px;
   font-family: monospace;
   font-weight: bold;
-  background: #EBEDEF;
 }
 button {
-  background: #EBEDEF;
+  background: black;
+  color:white;
   width: 23%;
   border-radius: 5px;
   height: 50px;
-  border: 0;
+  border: 2px solid #000;
   margin: 2px;
   font-weight: bold;
   font-size: 12px;
   font-family: monospace;
 }
 
-.optionMenu {
-  position: fixed;
-  border: 1px solid #C1C1C1;
-  bottom: 10%;
-  left: 0;
-  width: 50px;
-  background: #fff;
-  padding: 5px;
-  border-radius: 5px;
-}
 
 .pgnView {
   border-radius: 5px;
-	
-  background: #EBEDEF;
+  border: 2px solid #000;
   min-height: 100px;
-  padding: 10px;
+  padding:10px;
   margin: 10px;
   font-family: monospace;
   font-weight: bold;
   font-size: 12px;
+}
+.optionMenu {
+	width:100%;
+  margin: 2px 8px;
 }
 
 .optionMenu button {
   color: white;
   font-family: monospace;
   font-weight: bold;
-  width: 100%;
+  width: 23%; 
+  margin: 0px 2px;
   height: 50px;
-  font-size: 12px;
+  font-size: 10px;
   background: #000;
+  border: none;
   border-radius: 5px;
 }
