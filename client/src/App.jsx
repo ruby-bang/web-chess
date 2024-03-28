@@ -51,26 +51,31 @@ function App() {
 
   const resetBoard = () => {
     const elements = document.getElementsByClassName(`reset`);
-    elements[0].style.backgroundColor = 'white';
-    elements[0].style.color = 'black';
-    elements[0].style.border = '2px solid black';
+    elements[0].style.backgroundColor = '#000 ';
+    elements[0].style.color = 'white';
+    elements[0].style.border = '0';
+    elements[0].style.boxShadow = ' 0 0px 2px rgba(0, 0, 0, 0.0)';
     axios.get('/moves/reset').then((res) => {
       histroyRefecht()
 
       fenRefetch()
       setMoves(res.data);
       console.log("board reset")
-      elements[0].style.backgroundColor = 'black';
-      elements[0].style.color = 'white';
+      elements[0].style.color = 'black';
+      elements[0].style.border = ' 1px solid #DAD6D6';
+      elements[0].style.backgroundColor = '#fff';
+      elements[0].style.boxShadow = ' 0 0px 2px rgba(0, 0, 0, 0.2)';
 
     })
   }
 
   const enterHandle = (index) => {
     const elements = document.getElementsByClassName(`enterButton`);
-    elements[0].style.backgroundColor = 'white';
-    elements[0].style.color = 'black';
-    elements[0].style.border = '2px solid black';
+    elements[0].style.backgroundColor = '#000 ';
+    elements[0].style.color = 'white';
+    elements[0].style.border = '0';
+    elements[0].style.boxShadow = ' 0 0px 2px rgba(0, 0, 0, 0.0)';
+
 
     console.log(index)
     let form_data = {
@@ -81,8 +86,10 @@ function App() {
         histroyRefecht()
         fenRefetch()
         setMoves(res.data);
-        elements[0].style.backgroundColor = 'black';
-        elements[0].style.color = 'white';
+        elements[0].style.color = 'black';
+        elements[0].style.border = ' 1px solid #DAD6D6';
+        elements[0].style.backgroundColor = '#fff';
+        elements[0].style.boxShadow = ' 0 0px 2px rgba(0, 0, 0, 0.2)';
       })
       .catch((error) => {
         console.error('Error submitting move:', error);
@@ -91,9 +98,10 @@ function App() {
 
   const submitHandle = (index) => {
     const elements = document.getElementsByClassName(`button${index}`);
-    elements[0].style.backgroundColor = 'white';
-    elements[0].style.color = 'black';
-    elements[0].style.border = '2px solid black';
+    elements[0].style.backgroundColor = '#000 ';
+    elements[0].style.color = 'white';
+    elements[0].style.border = '0';
+    elements[0].style.boxShadow = ' 0 0px 2px rgba(0, 0, 0, 0.0)';
 
     console.log(index)
     let form_data = {
@@ -105,9 +113,10 @@ function App() {
         fenRefetch()
         setMoves(res.data);
 
-        elements[0].style.border = '0px';
-        elements[0].style.color = 'white';
-        elements[0].style.backgroundColor = '#000';
+        elements[0].style.color = 'black';
+        elements[0].style.border = ' 1px solid #DAD6D6';
+        elements[0].style.backgroundColor = '#fff';
+        elements[0].style.boxShadow = ' 0 0px 2px rgba(0, 0, 0, 0.2)';
       })
       .catch((error) => {
         console.error('Error submitting move:', error);
@@ -116,17 +125,21 @@ function App() {
 
   const undoHandle = () => {
     const elements = document.getElementsByClassName(`undoButton`);
-    elements[0].style.backgroundColor = 'white';
-    elements[0].style.color = 'black';
-    elements[0].style.border = '2px solid black';
+    elements[0].style.backgroundColor = '#000 ';
+    elements[0].style.color = 'white';
+    elements[0].style.border = '0';
+    elements[0].style.boxShadow = ' 0 0px 2px rgba(0, 0, 0, 0.0)';
 
     axios.get('/moves/undo')
       .then((res) => {
         histroyRefecht()
         fenRefetch()
         setMoves(res.data);
-        elements[0].style.backgroundColor = 'black';
-        elements[0].style.color = 'white';
+
+        elements[0].style.color = 'black';
+        elements[0].style.border = '1px solid #DAD6D6';
+        elements[0].style.backgroundColor = '#fff';
+        elements[0].style.boxShadow = ' 0 0px 2px rgba(0, 0, 0, 0.2)';
       })
       .catch((error) => {
         console.error('Error submitting move:', error);
@@ -147,11 +160,11 @@ function App() {
           <button className="enterButton" onClick={() => enterHandle(-1)}>Enter</button>
           <button className="reset" onClick={() => resetBoard()}>reset</button>
         </div>
-        <center>
+        <div className='buttonMenu'>
           {moves.map((move, index) => (
             <button className={`button${index}`} key={index} onClick={() => submitHandle(index)}>{move}</button>
           ))}
-        </center>
+        </div>
       </div>
     </>
   );
