@@ -1,19 +1,44 @@
+body {
+	margin:0;
+	padding:0;
+}
+
+.bodyMenu{
+	width: 95%;
+	margin : 10px
+}
+.fenView{
+
+	position:absolute;
+bottom:10px;
+left:20px;
+right:20px;
+  border-radius: 5px;
+	font-size: 10px;
+  padding: 10px;
+
+  margin-top: 20px;
+  font-family: monospace;
+  font-weight: bold;
+  background: #EBEDEF;
+}
 button {
   background: #EBEDEF;
-  width: 100%;
+  width: 23%;
+  border-radius: 5px;
   height: 50px;
   border: 0;
   margin: 2px;
   font-weight: bold;
-  font-size: 18px;
+  font-size: 12px;
   font-family: monospace;
 }
 
 .optionMenu {
   position: fixed;
   border: 1px solid #C1C1C1;
-  bottom: 0;
-  right: 0;
+  bottom: 10%;
+  left: 0;
   width: 50px;
   background: #fff;
   padding: 5px;
@@ -21,15 +46,22 @@ button {
 }
 
 .pgnView {
-  border: 1px solid black;
+  border-radius: 5px;
+	
+  background: #EBEDEF;
   min-height: 100px;
   padding: 10px;
+  margin: 10px;
   font-family: monospace;
-  font-size: 14px;
+  font-weight: bold;
+  font-size: 12px;
 }
 
 .optionMenu button {
   color: white;
+  font-family: monospace;
+  font-weight: bold;
+  width: 100%;
   height: 50px;
   font-size: 12px;
   background: #000;

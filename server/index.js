@@ -47,7 +47,6 @@ app.post('/moves', (req, res) => {
   const fen = chess.fen()
   GetResponse(fen).then((bestMove) => {
     const best = chess.get(bestMove.slice(0, 2))
-    console.log("test: ", best.type)
     if (best.type !== null) {
       if (best.type == "p") {
         const buff = bestMove.slice(2)
@@ -59,7 +58,6 @@ app.post('/moves', (req, res) => {
     }
     chess.move(bestMove)
     const moves = chess.moves()
-    console.log(moves)
     res.json(moves)
   }
   )
