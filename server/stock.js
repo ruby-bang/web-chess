@@ -15,7 +15,7 @@ function GetResponse(fen) {
         if (line.startsWith("bestmove")) {
           const bestMove = line.split(' ')[1];
           stockfish.stdin.end();
-          bestMoveFound = true; 
+          bestMoveFound = true;
           resolve(bestMove);
           return;
         }
