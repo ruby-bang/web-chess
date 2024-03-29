@@ -11,7 +11,7 @@ body {
 .fenView {
   border-radius: 5px;
   background: #fff;
-  box-shadow: 0 0px 2px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0px 1px rgba(0, 0, 0, 0.4);
   border: 1px solid #DAD6D6;
   font-size: 10px;
   margin-left: 10px;
@@ -30,7 +30,7 @@ body {
 
 button {
   background: #fff;
-  box-shadow: 0 0px 2px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0px 1px rgba(0, 0, 0, 0.4);
   border: 1px solid #DAD6D6;
   color: black;
   width: 23%;
@@ -46,7 +46,7 @@ button {
 .pgnView {
   border-radius: 5px;
   background: #fff;
-  box-shadow: 0 0px 2px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0px 1px rgba(0, 0, 0, 0.4);
   border: 1px solid #DAD6D6;
   min-height: 100px;
   padding: 10px;
@@ -63,7 +63,7 @@ button {
 
 .optionMenu button {
   background: #fff;
-  box-shadow: 0 0px 2px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0px 1px rgba(0, 0, 0, 0.4);
   border: 1px solid #DAD6D6;
   color: black;
   font-family: monospace;

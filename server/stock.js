@@ -2,7 +2,7 @@ const { exec } = require('child_process');
 
 function GetResponse(fen) {
   return new Promise((resolve, reject) => {
-    const stockfish = exec('stockfish');
+    const stockfish = exec('./stockfish');
 
     stockfish.stdin.write(`setoption name UCI_Elo value 3190\nposition fen ${fen}\n go depth 15\n`);
 

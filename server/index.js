@@ -64,7 +64,7 @@ app.post('/moves', (req, res) => {
 
 })
 
-app.listen(3001, (err) => {
+app.listen(3003, (err) => {
   if (err) {
     console.log("gagal menyambungkan ke 3001")
   } else {

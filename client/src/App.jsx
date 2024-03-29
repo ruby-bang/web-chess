@@ -64,7 +64,7 @@ function App() {
       elements[0].style.color = 'black';
       elements[0].style.border = ' 1px solid #DAD6D6';
       elements[0].style.backgroundColor = '#fff';
-      elements[0].style.boxShadow = ' 0 0px 2px rgba(0, 0, 0, 0.2)';
+      elements[0].style.boxShadow = ' 0 0px 1px rgba(0, 0, 0, 0.4)';
 
     })
   }
@@ -89,7 +89,7 @@ function App() {
         elements[0].style.color = 'black';
         elements[0].style.border = ' 1px solid #DAD6D6';
         elements[0].style.backgroundColor = '#fff';
-        elements[0].style.boxShadow = ' 0 0px 2px rgba(0, 0, 0, 0.2)';
+      elements[0].style.boxShadow = ' 0 0px 1px rgba(0, 0, 0, 0.4)';
       })
       .catch((error) => {
         console.error('Error submitting move:', error);
@@ -116,7 +116,7 @@ function App() {
         elements[0].style.color = 'black';
         elements[0].style.border = ' 1px solid #DAD6D6';
         elements[0].style.backgroundColor = '#fff';
-        elements[0].style.boxShadow = ' 0 0px 2px rgba(0, 0, 0, 0.2)';
+      elements[0].style.boxShadow = ' 0 0px 1px rgba(0, 0, 0, 0.4)';
       })
       .catch((error) => {
         console.error('Error submitting move:', error);
@@ -139,7 +139,7 @@ function App() {
         elements[0].style.color = 'black';
         elements[0].style.border = '1px solid #DAD6D6';
         elements[0].style.backgroundColor = '#fff';
-        elements[0].style.boxShadow = ' 0 0px 2px rgba(0, 0, 0, 0.2)';
+      elements[0].style.boxShadow = ' 0 0px 1px rgba(0, 0, 0, 0.4)';
       })
       .catch((error) => {
         console.error('Error submitting move:', error);
