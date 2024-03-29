@@ -8,6 +8,15 @@ body {
   margin: 10px
 }
 
+.bodyWho{
+	width:100%;
+	padding-top: 10px;
+	font-weight:bold;
+  font-family: monospace;
+	font-size:10px;
+	text-align:center;
+}
+
 .fenView {
   border-radius: 5px;
   background: #fff;

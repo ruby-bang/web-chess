@@ -5,6 +5,7 @@ import { useState } from 'react';
 
 function App() {
   const [moves, setMoves] = useState([]);
+  const [whoWin, setWhoWin] = useState("");
 
   const { data: moveHistory, isLoading: moveHistoryLoading, refetch: histroyRefecht } = useQuery('moveHistory', () => {
     return axios.get('/moves/history')
@@ -49,6 +50,20 @@ function App() {
   if (moveHistoryLoading || isLoading || fenLoading) return <p>Loading...</p>;
   if (isError) return <p>Error fetching data</p>;
 
+	const checkMate = () => {
+    axios.get('/moves/checkmate')
+      .then((res) => {
+        if (res.status !== 200) {
+          throw new Error('Network response was not ok');
+        }
+        setWhoWin("W " + (res.data === 'w' ? '0 - 1' : '1 - 0') + " B");
+        return res.data;
+      })
+      .catch((error) => {
+        throw new Error('Error fetching data:', error);
+      })
+
+	}
   const check = () => {
     axios.get('/moves/check')
       .then((res) => {
@@ -59,7 +74,10 @@ function App() {
         if (res.data) {
           elements[0].style.backgroundColor = '#Eee ';
           elements[0].disabled = true
+
+		checkMate()
         } else {
+		setWhoWin("")
           elements[0].disabled = false
           elements[0].style.backgroundColor = '#fff ';
         }
@@ -98,6 +116,7 @@ function App() {
     elements[0].style.border = '0';
     elements[0].style.boxShadow = ' 0 0px 2px rgba(0, 0, 0, 0.0)';
 
+          elements[0].disabled = true
 
     let form_data = {
       "move": `-1`
@@ -108,6 +127,7 @@ function App() {
         fenRefetch()
         setMoves(res.data);
         check()
+          elements[0].disabled = false
         elements[0].style.color = 'black';
         elements[0].style.border = ' 1px solid #DAD6D6';
         elements[0].style.backgroundColor = '#fff';
@@ -122,6 +142,7 @@ function App() {
     const elements = document.getElementsByClassName(`button${index}`);
     elements[0].style.backgroundColor = '#000 ';
     elements[0].style.color = 'white';
+          elements[0].disabled = true
     elements[0].style.border = '0';
     elements[0].style.boxShadow = ' 0 0px 2px rgba(0, 0, 0, 0.0)';
 
@@ -134,6 +155,7 @@ function App() {
         fenRefetch()
         setMoves(res.data);
         check()
+          elements[0].disabled = false
 
         elements[0].style.color = 'black';
         elements[0].style.border = ' 1px solid #DAD6D6';
@@ -175,6 +197,9 @@ function App() {
         <div className='fenView'>
           {fenData}
         </div>
+	  <div className='bodyWho'>
+	  {whoWin}
+	  </div>
         <div className='pgnView'>
           {moveHistory}
         </div>
