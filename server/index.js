@@ -9,6 +9,11 @@ const app = Express()
 app.use(Express.json())
 
 
+
+app.get('/moves/check', (req, res) => {
+  const in_checkmate = chess.isCheckmate()
+  res.json(in_checkmate)
+})
 app.get('/moves/fen', (req, res) => {
   const fen = chess.fen()
   res.json(fen)
