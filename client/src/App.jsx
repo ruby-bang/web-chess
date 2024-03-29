@@ -1,5 +1,9 @@
 import { useQuery } from 'react-query';
+import '@fortawesome/fontawesome-free/css/all.css';
 import axios from 'axios';
+import undo from './assets/undo.png';
+import flip from './assets/flip.png';
+import reset from './assets/reset.png';
 import './App.css'
 import { useState } from 'react';
 
@@ -204,9 +208,15 @@ function App() {
           {moveHistory}
         </div>
         <div className='optionMenu'>
-          <button className="undoButton" onClick={() => undoHandle()}>undo</button>
-          <button className="enterButton" onClick={() => enterHandle()}>Enter</button>
-          <button className="reset" onClick={() => resetBoard()}>reset</button>
+          <button className="undoButton" onClick={() => undoHandle()}>
+	  <i class="fas fa-undo"></i>
+	  </button>
+          <button className="enterButton" onClick={() => enterHandle()}>
+	  	<i class="fas fa-sync"></i>
+	</button>
+          <button className="reset" onClick={() => resetBoard()}>
+	  <i class="fas fa-trash"></i>
+	</button>
         </div>
         <div className='buttonMenu'>
           {moves.map((move, index) => (
