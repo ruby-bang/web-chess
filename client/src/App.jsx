@@ -49,6 +49,27 @@ function App() {
   if (moveHistoryLoading || isLoading || fenLoading) return <p>Loading...</p>;
   if (isError) return <p>Error fetching data</p>;
 
+  const check = () => {
+    axios.get('/moves/check')
+      .then((res) => {
+        if (res.status !== 200) {
+          throw new Error('Network response was not ok');
+        }
+        const elements = document.getElementsByClassName(`enterButton`);
+        if (res.data) {
+          elements[0].style.backgroundColor = '#Eee ';
+          elements[0].disabled = true
+        } else {
+          elements[0].disabled = false
+          elements[0].style.backgroundColor = '#fff ';
+        }
+        //return res.data;
+      })
+      .catch((error) => {
+        throw new Error('Error fetching data:', error);
+      })
+  }
+
   const resetBoard = () => {
     const elements = document.getElementsByClassName(`reset`);
     elements[0].style.backgroundColor = '#000 ';
@@ -58,6 +79,7 @@ function App() {
     axios.get('/moves/reset').then((res) => {
       histroyRefecht()
 
+      check()
       fenRefetch()
       setMoves(res.data);
       console.log("board reset")
@@ -69,7 +91,7 @@ function App() {
     })
   }
 
-  const enterHandle = (index) => {
+  const enterHandle = () => {
     const elements = document.getElementsByClassName(`enterButton`);
     elements[0].style.backgroundColor = '#000 ';
     elements[0].style.color = 'white';
@@ -77,7 +99,6 @@ function App() {
     elements[0].style.boxShadow = ' 0 0px 2px rgba(0, 0, 0, 0.0)';
 
 
-    console.log(index)
     let form_data = {
       "move": `-1`
     }
@@ -86,10 +107,11 @@ function App() {
         histroyRefecht()
         fenRefetch()
         setMoves(res.data);
+        check()
         elements[0].style.color = 'black';
         elements[0].style.border = ' 1px solid #DAD6D6';
         elements[0].style.backgroundColor = '#fff';
-      elements[0].style.boxShadow = ' 0 0px 1px rgba(0, 0, 0, 0.4)';
+        elements[0].style.boxShadow = ' 0 0px 1px rgba(0, 0, 0, 0.4)';
       })
       .catch((error) => {
         console.error('Error submitting move:', error);
@@ -103,7 +125,6 @@ function App() {
     elements[0].style.border = '0';
     elements[0].style.boxShadow = ' 0 0px 2px rgba(0, 0, 0, 0.0)';
 
-    console.log(index)
     let form_data = {
       "move": `${(index != -1) ? moves[index] : -1}`
     }
@@ -112,11 +133,12 @@ function App() {
         histroyRefecht()
         fenRefetch()
         setMoves(res.data);
+        check()
 
         elements[0].style.color = 'black';
         elements[0].style.border = ' 1px solid #DAD6D6';
         elements[0].style.backgroundColor = '#fff';
-      elements[0].style.boxShadow = ' 0 0px 1px rgba(0, 0, 0, 0.4)';
+        elements[0].style.boxShadow = ' 0 0px 1px rgba(0, 0, 0, 0.4)';
       })
       .catch((error) => {
         console.error('Error submitting move:', error);
@@ -135,11 +157,12 @@ function App() {
         histroyRefecht()
         fenRefetch()
         setMoves(res.data);
+        check()
 
         elements[0].style.color = 'black';
         elements[0].style.border = '1px solid #DAD6D6';
         elements[0].style.backgroundColor = '#fff';
-      elements[0].style.boxShadow = ' 0 0px 1px rgba(0, 0, 0, 0.4)';
+        elements[0].style.boxShadow = ' 0 0px 1px rgba(0, 0, 0, 0.4)';
       })
       .catch((error) => {
         console.error('Error submitting move:', error);
@@ -157,7 +180,7 @@ function App() {
         </div>
         <div className='optionMenu'>
           <button className="undoButton" onClick={() => undoHandle()}>undo</button>
-          <button className="enterButton" onClick={() => enterHandle(-1)}>Enter</button>
+          <button className="enterButton" onClick={() => enterHandle()}>Enter</button>
           <button className="reset" onClick={() => resetBoard()}>reset</button>
         </div>
         <div className='buttonMenu'>
