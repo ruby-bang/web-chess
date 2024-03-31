@@ -4,7 +4,7 @@ function GetResponse(fen) {
   return new Promise((resolve, reject) => {
     const stockfish = exec('./stockfish');
 
-    stockfish.stdin.write(`setoption name UCI_Elo value 3190\nposition fen ${fen}\n go depth 15\n`);
+    stockfish.stdin.write(`setoption name UCI_Elo value 2000\nsetoption name UCI_LimitStrength value true\nposition fen ${fen}\n go depth 12\n`);
 
     let bestMoveFound = false;
 
